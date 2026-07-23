@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "website": "https://www.salesforce.com",
+    "category_hint": "CRM and Sales",
+    "hints": ["salesforce.com"]
+  }
+]

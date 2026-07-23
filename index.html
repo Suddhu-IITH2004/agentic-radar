@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTIE Report — run-20260723 20:01:09</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root { --bg: #f7f8fa; --card: #fff; --text: #1f2937; --muted: #6b7280; --accent: #2563eb; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+        header { background: linear-gradient(135deg, var(--accent) 0%, #1e40af 100%); color: white; border-bottom: none; padding: 3rem 1rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+        header h1 { margin: 0 0 .5rem; font-size: 2rem; font-weight: 700; }
+        header p { margin: 0; opacity: 0.9; }
+        main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .card { background: var(--card); border-radius: .75rem; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); transition: transform .2s, box-shadow .2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+        .card h3 { margin: 0 0 .5rem; font-size: .875rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+        .card .value { font-size: 2.25rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), #1e40af); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .chart-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .chart-card { background: var(--card); border-radius: .75rem; padding: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+        table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: .75rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+        th, td { padding: .75rem; text-align: left; border-bottom: 1px solid #e5e7eb; font-size: .875rem; }
+        th { background: linear-gradient(135deg, #f3f4f6, #ffffff); font-weight: 600; }
+        tr:hover { background: #f9fafb; }
+        .badge { display: inline-block; padding: .25rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 600; background: #e5e7eb; }
+        .badge.high { background: #dcfce7; color: #166534; }
+        .badge.medium { background: #fef9c3; color: #854d0e; }
+        .badge.low { background: #fee2e2; color: #991b1b; }
+        .badge.unknown { background: #f3f4f6; color: #374151; }
+        .insights { margin: 1.5rem 0; }
+        .insight { background: var(--card); border-radius: .75rem; padding: 1rem; margin-bottom: .75rem; box-shadow: 0 2px 8px rgba(0,0,0,.08); border-left: 4px solid var(--accent); }
+        .insight h4 { margin: 0 0 .25rem; color: var(--accent); }
+        .insight p { margin: 0; color: var(--muted); }
+        .mermaid { background: var(--card); padding: 1.5rem; border-radius: .75rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+        section h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--accent); }
+        footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .875rem; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Composio Toolkit Intelligence Engine</h1>
+    <p>Run: run-20260723 &middot; Generated: 2026-07-23 20:01:09 JST</p>
+</header>
+<main>
+    <section class="grid">
+        <div class="card"><h3>Total Apps</h3><div class="value">100</div></div>
+        <div class="card"><h3>Completed</h3><div class="value">98</div></div>
+        <div class="card"><h3>Failed</h3><div class="value">2</div></div>
+        <div class="card"><h3>Success Rate</h3><div class="value">98%</div></div>
+    </section>
+
+    <section class="insights">
+        <h2>Insights</h2>
+        
+        <div class="insight">
+            <h4>Pipeline completion</h4>
+            <p>98 of 100 apps completed successfully; 2 failed.</p>
+        </div>
+        
+        <div class="insight">
+            <h4>Most common auth method: OAuth2</h4>
+            <p>66 apps (67%) use OAuth2.</p>
+        </div>
+        
+        <div class="insight">
+            <h4>Most common API type: REST</h4>
+            <p>91 apps (93%) expose a REST API.</p>
+        </div>
+        
+        <div class="insight">
+            <h4>Developer access model</h4>
+            <p>86 self-serve, 10 gated, 2 other.</p>
+        </div>
+        
+        <div class="insight">
+            <h4>Average overall confidence: 0.5</h4>
+            <p>Higher scores indicate more evidence-backed extractions.</p>
+        </div>
+        
+        <div class="insight">
+            <h4>Buildability</h4>
+            <p>98 apps appear buildable as toolkits today; 20 have an MCP server; 98 are already in the Composio catalog.</p>
+        </div>
+        
+    </section>
+
+    <section>
+        <h2>Pipeline</h2>
+        <div class="mermaid">
+flowchart LR
+    Search --> Fetch --> Extract --> Verify --> Score --> Enrich --> Save
+        </div>
+    </section>
+
+    <section class="chart-row">
+        <div class="chart-card"><canvas id="authChart"></canvas></div>
+        <div class="chart-card"><canvas id="apiChart"></canvas></div>
+        <div class="chart-card"><canvas id="confidenceChart"></canvas></div>
+        <div class="chart-card"><canvas id="selfServeChart"></canvas></div>
+    </section>
+
+    <section>
+        <h2>Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>App</th>
+                    <th>Category</th>
+                    <th>Auth</th>
+                    <th>API</th>
+                    <th>Self-serve</th>
+                    <th>MCP</th>
+                    <th>Buildable</th>
+                    <th>Confidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>Salesforce</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, JWT, API Key, Token, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>HubSpot</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Pipedrive</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Attio</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, API Key, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Twenty</td>
+                    <td>CRM and Sales</td>
+                    <td>API Key, OAuth2, JWT</td>
+                    <td>GraphQL</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Podio</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Zoho CRM</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Close</td>
+                    <td>CRM and Sales</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Copper</td>
+                    <td>CRM and Sales</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>DealCloud</td>
+                    <td>CRM and Sales</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Zendesk</td>
+                    <td>Support and Helpdesk</td>
+                    <td>API Key, OAuth2, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Intercom</td>
+                    <td>Support and Helpdesk</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Freshdesk</td>
+                    <td>Support and Helpdesk</td>
+                    <td>API Key, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Front</td>
+                    <td>Support and Helpdesk</td>
+                    <td>-</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
+                    <td>?</td>
+                    <td>?</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Pylon</td>
+                    <td>Support and Helpdesk</td>
+                    <td>Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>LiveAgent</td>
+                    <td>Support and Helpdesk</td>
+                    <td>API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Plain</td>
+                    <td>Support and Helpdesk</td>
+                    <td>API Key, Token</td>
+                    <td>GraphQL</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Help Scout</td>
+                    <td>Support and Helpdesk</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Gorgias</td>
+                    <td>Support and Helpdesk</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Gladly</td>
+                    <td>Support and Helpdesk</td>
+                    <td>Basic, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Slack</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2, Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Twilio</td>
+                    <td>Communications and Messaging</td>
+                    <td>API Key, Basic, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Zoho Cliq</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Lark</td>
+                    <td>Communications and Messaging</td>
+                    <td>Token, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Pumble</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Discord</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Telegram</td>
+                    <td>Communications and Messaging</td>
+                    <td>API Key, Token, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>WhatsApp Business</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Aircall</td>
+                    <td>Communications and Messaging</td>
+                    <td>OAuth2, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Vonage</td>
+                    <td>Communications and Messaging</td>
+                    <td>API Key, Basic, JWT</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Google Ads</td>
+                    <td>Marketing, Ads</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Meta Ads</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>LinkedIn Ads</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>OAuth2</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>GoHighLevel</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>OAuth2, API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Mailchimp</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Klaviyo</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>systeme.io</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Pinterest</td>
+                    <td>Marketing, Ads, Social</td>
+                    <td>OAuth2, Basic</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Threads</td>
+                    <td>Marketing, Ads, Email and Social</td>
+                    <td>OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>SendGrid</td>
+                    <td>Email and Social</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Shopify</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, Token, JWT</td>
+                    <td>GraphQL</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>WooCommerce</td>
+                    <td>Ecommerce</td>
+                    <td>API Key, Basic, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>BigCommerce</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, JWT, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Salesforce Commerce Cloud</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, JWT</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Magento</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Squarespace</td>
+                    <td>Ecommerce</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Ecwid</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Gumroad</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Amazon Selling Partner</td>
+                    <td>Ecommerce</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>fanbasis</td>
+                    <td>Ecommerce</td>
+                    <td>API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>DataForSEO</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>SE Ranking</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Ahrefs</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key, OAuth2</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>MrScraper</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Apify</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>Token, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Firecrawl</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Bright Data</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key, Token, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Sherlock</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>Token, JWT, Other</td>
+                    <td>gRPC</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Waterfall.io</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key</td>
+                    <td>REST</td>
+                    <td>Unknown</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Clay</td>
+                    <td>Data, SEO and Scraping</td>
+                    <td>API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>GitHub</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>Token, OAuth2, Basic, JWT</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Vercel</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>OAuth2, Token, JWT</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Netlify</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Cloudflare</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>API Key, Token, Other</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Supabase</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>-</td>
+                    <td>Unknown</td>
+                    <td>Unknown</td>
+                    <td>?</td>
+                    <td>?</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Neo4j</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>Basic, Token, OAuth2, Other</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Snowflake</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>OAuth2, JWT, Token, Other</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>MongoDB Atlas</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>OAuth2, API Key, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Datadog</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>API Key, Token, OAuth2, Other</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Sentry</td>
+                    <td>Developer, Infra and Data platforms</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Notion</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Airtable</td>
+                    <td>Productivity and Project Management</td>
+                    <td>Token, OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Linear</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, API Key</td>
+                    <td>GraphQL</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Jira</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, JWT, Basic, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Asana</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Monday.com</td>
+                    <td>Productivity and Project Management</td>
+                    <td>Token, OAuth2, JWT</td>
+                    <td>GraphQL</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>ClickUp</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Coda</td>
+                    <td>Productivity and Project Management</td>
+                    <td>Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Smartsheet</td>
+                    <td>Productivity and Project Management</td>
+                    <td>API Key, OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Harvest</td>
+                    <td>Productivity and Project Management</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Stripe</td>
+                    <td>Finance and Fintech</td>
+                    <td>API Key, Basic</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Plaid</td>
+                    <td>Finance and Fintech</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Binance</td>
+                    <td>Finance and Fintech</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Paygent Connect</td>
+                    <td>Finance and Fintech</td>
+                    <td>Token, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>iPayX</td>
+                    <td>Finance and Fintech</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>QuickBooks</td>
+                    <td>Finance and Fintech</td>
+                    <td>OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Xero</td>
+                    <td>Finance and Fintech</td>
+                    <td>OAuth2</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Brex</td>
+                    <td>Finance and Fintech</td>
+                    <td>Token, OAuth2</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Ramp</td>
+                    <td>Finance and Fintech</td>
+                    <td>OAuth2, API Key</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>PitchBook</td>
+                    <td>Finance and Fintech</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>NotebookLM</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>Token, Other</td>
+                    <td>REST</td>
+                    <td>Unknown</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Otter AI</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Gated</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Fathom</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>API Key, OAuth2, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Consensus</td>
+                    <td>AI, Research</td>
+                    <td>OAuth2, API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Reducto</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Devin</td>
+                    <td>AI</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>higgsfield</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Mermaid CLI</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>Unknown</td>
+                    <td>CLI</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+                <tr>
+                    <td>YouTube Transcript</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>API Key, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                    <td><span class="badge low">Low</span></td>
+                </tr>
+                
+                <tr>
+                    <td>Grain</td>
+                    <td>AI, Research and Media-native</td>
+                    <td>API Key, JWT, Token</td>
+                    <td>REST</td>
+                    <td>Self-serve</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                    <td><span class="badge medium">Medium</span></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>Generated by CTIE</footer>
+
+<script>
+    const distribution = {"api_type": {"CLI": 1, "GraphQL": 5, "REST": 91, "gRPC": 1}, "auth": {"API Key": 58, "Basic": 17, "JWT": 13, "OAuth2": 66, "Other": 6, "Token": 61, "Unknown": 1}, "confidence": {"Low": 10, "Medium": 88}, "self_serve": {"Gated": 10, "Self-serve": 86, "Unknown": 2}};
+    const palette = ['#2563eb', '#16a34a', '#ca8a04', '#dc2626', '#9333ea', '#0891b2', '#ea580c'];
+
+    function makeBarChart(id, label, data) {
+        const ctx = document.getElementById(id).getContext('2d');
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+        new Chart(ctx, {
+            type: 'bar',
+            data: { labels, datasets: [{ label, data: values, backgroundColor: palette }] },
+            options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+        });
+    }
+
+    makeBarChart('authChart', 'Auth Methods', distribution.auth);
+    makeBarChart('apiChart', 'API Types', distribution.api_type);
+    makeBarChart('confidenceChart', 'Confidence', distribution.confidence);
+    makeBarChart('selfServeChart', 'Self-serve Status', distribution.self_serve);
+
+    mermaid.initialize({ startOnLoad: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTIE Report — {{ run_id }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root { --bg: #f7f8fa; --card: #fff; --text: #1f2937; --muted: #6b7280; --accent: #2563eb; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+        header { background: var(--card); border-bottom: 1px solid #e5e7eb; padding: 2rem 1rem; text-align: center; }
+        header h1 { margin: 0 0 .5rem; font-size: 1.75rem; }
+        header p { margin: 0; color: var(--muted); }
+        main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .card { background: var(--card); border-radius: .75rem; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+        .card h3 { margin: 0 0 .5rem; font-size: .875rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+        .card .value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .chart-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .chart-card { background: var(--card); border-radius: .75rem; padding: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+        table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: .75rem; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+        th, td { padding: .75rem; text-align: left; border-bottom: 1px solid #e5e7eb; font-size: .875rem; }
+        th { background: #f3f4f6; font-weight: 600; }
+        tr:hover { background: #f9fafb; }
+        .badge { display: inline-block; padding: .25rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 600; background: #e5e7eb; }
+        .badge.high { background: #dcfce7; color: #166534; }
+        .badge.medium { background: #fef9c3; color: #854d0e; }
+        .badge.low { background: #fee2e2; color: #991b1b; }
+        .badge.unknown { background: #f3f4f6; color: #374151; }
+        .insights { margin: 1.5rem 0; }
+        .insight { background: var(--card); border-radius: .75rem; padding: 1rem; margin-bottom: .75rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+        .insight h4 { margin: 0 0 .25rem; }
+        .insight p { margin: 0; color: var(--muted); }
+        .mermaid { background: var(--card); padding: 1rem; border-radius: .75rem; margin: 1.5rem 0; }
+        footer { text-align: center; padding: 2rem; color: var(--muted); font-size: .875rem; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Composio Toolkit Intelligence Engine</h1>
+    <p>Run: {{ run_id }} &middot; Generated: {{ generated_at }}</p>
+</header>
+<main>
+    <section class="grid">
+        <div class="card"><h3>Total Apps</h3><div class="value">{{ total_apps }}</div></div>
+        <div class="card"><h3>Completed</h3><div class="value">{{ completed_apps }}</div></div>
+        <div class="card"><h3>Failed</h3><div class="value">{{ failed_apps }}</div></div>
+        <div class="card"><h3>Success Rate</h3><div class="value">{{ "%.0f"|format(completed_apps / total_apps * 100) if total_apps else 0 }}%</div></div>
+    </section>
+
+    <section class="insights">
+        <h2>Insights</h2>
+        {% for insight in insights %}
+        <div class="insight">
+            <h4>{{ insight.headline }}</h4>
+            <p>{{ insight.body }}</p>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="mermaid">
+        <h2>Pipeline</h2>
+        <pre class="mermaid">
+flowchart LR
+    Search --> Fetch --> Extract --> Verify --> Score --> Enrich --> Save
+        </pre>
+    </section>
+
+    <section class="chart-row">
+        <div class="chart-card"><canvas id="authChart"></canvas></div>
+        <div class="chart-card"><canvas id="apiChart"></canvas></div>
+        <div class="chart-card"><canvas id="confidenceChart"></canvas></div>
+        <div class="chart-card"><canvas id="selfServeChart"></canvas></div>
+    </section>
+
+    <section>
+        <h2>Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>App</th>
+                    <th>Category</th>
+                    <th>Auth</th>
+                    <th>API</th>
+                    <th>Self-serve</th>
+                    <th>MCP</th>
+                    <th>Buildable</th>
+                    <th>Confidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in results %}
+                <tr>
+                    <td>{{ r.app_name }}</td>
+                    <td>{{ r.category or '-' }}</td>
+                    <td>{{ r.auth_methods | map(attribute='value') | join(', ') if r.auth_methods else '-' }}</td>
+                    <td>{{ r.api_type.value }}</td>
+                    <td>{{ r.self_serve.value }}</td>
+                    <td>{{ 'Yes' if r.has_mcp else 'No' if r.has_mcp is not none else '?' }}</td>
+                    <td>{{ 'Yes' if r.buildable else 'No' if r.buildable is not none else '?' }}</td>
+                    <td><span class="badge {{ r.overall_confidence.confidence.value.lower() }}">{{ r.overall_confidence.confidence.value }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>Generated by CTIE</footer>
+
+<script>
+    const distribution = {{ distribution | tojson }};
+    const palette = ['#2563eb', '#16a34a', '#ca8a04', '#dc2626', '#9333ea', '#0891b2', '#ea580c'];
+
+    function makeBarChart(id, label, data) {
+        const ctx = document.getElementById(id).getContext('2d');
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+        new Chart(ctx, {
+            type: 'bar',
+            data: { labels, datasets: [{ label, data: values, backgroundColor: palette }] },
+            options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0 } } } }
+        });
+    }
+
+    makeBarChart('authChart', 'Auth Methods', distribution.auth);
+    makeBarChart('apiChart', 'API Types', distribution.api_type);
+    makeBarChart('confidenceChart', 'Confidence', distribution.confidence);
+    makeBarChart('selfServeChart', 'Self-serve Status', distribution.self_serve);
+
+    mermaid.initialize({ startOnLoad: true });
+</script>
+</body>
+</html>
